@@ -104,17 +104,12 @@ class webController extends CI_Controller {
     public function daftarkost_data(){
         $config['upload_path']          =  './upload/';
         $config['allowed_types']        =  'jpg|png';
-        $config['max_size']             =  2000;
-        $config['max_width']            =  0;
-        $config['max_height']           = 0;
+        $config['max_size']             =  2048;
+        $config['max_width']            =  5000;
+        $config['max_height']           = 5000;
         
         $this->load->library('upload', $config);
         $this->upload->do_upload('userfile');
-        /*if (!$this->upload->do_upload('userfile')){
-            $error = array('error' => $this->upload->display_errors());
-			$this->load->view('daftarkost');
-        }*/
-        /*else{*/
             $content = $this->upload->data();
             $path = "upload/".$content["file_name"];
             $data = array(
@@ -124,13 +119,11 @@ class webController extends CI_Controller {
                 "fasilitas" => $this->input->post('fasilitas',true),
                 "harga"=> $this->input->post('harga',true),
                 "jenis"=> $this->input->post('jeniskost',true),
-                "namapemilik"=> $this->input->post('namapemilik',true),
+                "namapemilik"=> $this->input->post('namapemilik', true),
                 "contact" => $this->input->post('contact',true),
                 "foto"=> $path
             );
             $this->kost->daftarkost($data);
             redirect('webController/daftarkost'); 
-            
-        /*}*/
     }
 }
