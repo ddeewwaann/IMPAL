@@ -56,7 +56,7 @@
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-6 file-upload">
-                        <form action="<?php echo base_url('index.php/webController/daftarkost_data')?>" method="post">
+                        <form action="<?php echo base_url('index.php/webController/daftarkost_data')?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label><h6>Nama Kost</h6></label>
                                 <input type="text" class="form-control" placeholder="Masukkan Nama Kost" name="namakost">
